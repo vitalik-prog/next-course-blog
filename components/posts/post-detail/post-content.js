@@ -49,12 +49,13 @@ function PostContent(props) {
     },
 
     code(code) {
-      const { language, value } = code;
+      console.log(code);
+      const { children } = code;
       return (
         <SyntaxHighlighter
           style={atomDark}
-          language={language}
-          children={value}
+          language="js"
+          children={children}
         />
       );
     },
@@ -63,7 +64,7 @@ function PostContent(props) {
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} />
-      <ReactMarkdown renderers={customRenderers}>{post.content}</ReactMarkdown>
+      <ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
     </article>
   );
 }
