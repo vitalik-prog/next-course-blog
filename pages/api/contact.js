@@ -23,7 +23,7 @@ async function handler(req, res) {
     };
 
     let client;
-    const uri = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.tapjdba.mongodb.net/?retryWrites=true&w=majority`;
+    const uri = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.tapjdba.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
 
     try {
       client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
