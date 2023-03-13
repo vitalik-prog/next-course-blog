@@ -27,20 +27,20 @@ function PostContent(props) {
     //     />
     //   );
     // },
-    paragraph(paragraph) {
+    p(paragraph) {
       const { node } = paragraph;
-
-      if (node.children[0].type === 'image') {
+      
+      if (node.children[0]?.tagName === 'img') {
         const image = node.children[0];
 
         return (
           <div className={classes.image}>
-            <Image
-              src={`/images/posts/${post.slug}/${image.url}`}
-              alt={image.alt}
+            {image && <Image
+              src={`/images/posts/${post.slug}/${image.properties?.src}`}
+              alt={image.properties?.alt}
               width={600}
               height={300}
-            />
+            />}
           </div>
         );
       }
@@ -49,7 +49,6 @@ function PostContent(props) {
     },
 
     code(code) {
-      console.log(code);
       const { children } = code;
       return (
         <SyntaxHighlighter
